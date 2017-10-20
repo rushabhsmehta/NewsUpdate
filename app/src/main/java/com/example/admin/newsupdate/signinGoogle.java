@@ -181,7 +181,7 @@ public class signinGoogle extends BaseActivity implements
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
 
-            Intent intent = new Intent(this, SubmitNews.class);
+            Intent intent = new Intent(this, NavigationDrawer.class);
             startActivity(intent);
             finish();
         } else {

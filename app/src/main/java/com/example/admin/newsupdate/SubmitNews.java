@@ -39,7 +39,7 @@ import java.util.Date;
 
 public class SubmitNews extends AppCompatActivity {
 
-    public static final int PICK_IMAGE = 100;
+/*    public static final int PICK_IMAGE = 100;
     private Intent imagedata = null;
     private boolean imageChangedforApprovedNews = false;
     private EditText newsTitle;
@@ -342,5 +342,5 @@ public class SubmitNews extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         newsSubmitter.setText(mAuth.getCurrentUser().getDisplayName());
 
-    }
+    }*/
 }

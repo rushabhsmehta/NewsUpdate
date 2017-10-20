@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/submit_news"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Submit News" />
+        <item
+            android:id="@+id/load_unapproved_news"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Load Unapproved News" />
+        <item
+            android:id="@+id/approve_news"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Approve News" />
+        <item
+            android:id="@+id/delete_news"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Delete News" />
+    </group>
+</menu>

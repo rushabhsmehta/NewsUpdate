@@ -6,39 +6,27 @@ package com.example.admin.newsupdate;
 
 public class addNews  {
 
-    String description;
+    String description_guj;
+    String description_eng;
     String img_url;
     String tag;
-    String title;
+    String title_guj;
+    String title_eng;
     String user;
 
     public addNews() {
 
     }
 
-    public addNews(String description, String img_url, String tag, String title, String user)
+    public addNews(String description_guj, String description_eng, String img_url, String tag, String title_guj, String title_eng, String user)
     {
-        this.title = title;
-        this.description = description;
+        this.title_guj = title_guj;
+        this.title_eng = title_eng;
+        this.description_guj = description_guj;
+        this.description_eng = description_eng;
         this.img_url = img_url;
         this.tag = tag;
         this.user = user;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getImg_url() {
@@ -59,5 +47,41 @@ public class addNews  {
 
     public String getUser() {
         return user;
+    }
+
+    public String getDescription_guj() {
+        return description_guj;
+    }
+
+    public void setDescription_guj(String description_guj) {
+        this.description_guj = description_guj;
+    }
+
+    public String getDescription_eng() {
+        return description_eng;
+    }
+
+    public void setDescription_eng(String description_eng) {
+        this.description_eng = description_eng;
+    }
+
+    public String getTitle_guj() {
+        return title_guj;
+    }
+
+    public void setTitle_guj(String title_guj) {
+        this.title_guj = title_guj;
+    }
+
+    public String getTitle_eng() {
+        return title_eng;
+    }
+
+    public void setTitle_eng(String title_eng) {
+        this.title_eng = title_eng;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }
