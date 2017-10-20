@@ -11,13 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.admin.newsupdate.R;
-import com.example.admin.newsupdate.addNews;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +32,10 @@ import com.google.firebase.storage.UploadTask;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class SubmitNews extends AppCompatActivity {
 
@@ -43,6 +46,7 @@ public class SubmitNews extends AppCompatActivity {
     private ImageView newsImage;
     private EditText newsDescription;
     private TextView newsSubmitter;
+
 
     private String newstitle;
     private String newsimageurl;
@@ -81,6 +85,7 @@ public class SubmitNews extends AppCompatActivity {
                     getSupportActionBar().show();
             }
         });
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -89,6 +94,7 @@ public class SubmitNews extends AppCompatActivity {
         if(!FirebaseAuth.getInstance().getCurrentUser().getEmail().equals("rushabhsmehat@gmail.com")) {
             menu.findItem(R.id.load_unapproved_news).setVisible(false);
             menu.findItem(R.id.approve_news).setVisible(false);
+            menu.findItem(R.id.delete_news).setVisible(false);
         }
         return true;
     }
@@ -98,6 +104,7 @@ public class SubmitNews extends AppCompatActivity {
             case R.id.submit : submitNewsUnApproved(); return (true);
             case R.id.load_unapproved_news: load_unapprovedNews(); return (true);
             case R.id.approve_news: approveNews(); return (true);
+            case R.id.delete_news: deleteNews(); return (true);
         }
         return (super.onOptionsItemSelected(item));
     }
@@ -194,7 +201,7 @@ public class SubmitNews extends AppCompatActivity {
     }
 
     private void load_unapprovedNews() {
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("unapproved");
         databaseReference.limitToFirst(1).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -208,7 +215,7 @@ public class SubmitNews extends AppCompatActivity {
                     newsDescription.setText(an.getDescription());
                     newsSubmitter.setText(an.getUser());
                     newsimageurl = an.getImg_url();
-                    imagedata.setData(Uri.parse(an.getImg_url()));
+                    //imagedata.setData(Uri.parse(an.getImg_url()));
       }
              @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -218,7 +225,7 @@ public class SubmitNews extends AppCompatActivity {
     }
 
     private void approveNews() {
-        if (newsTitle.getText().toString() != null && newsDescription.getText() != null && imagedata != null) {
+        if (newsTitle.getText().toString() != null && newsDescription.getText() != null ) {
 
             AlertDialog.Builder adb = new AlertDialog.Builder(this);
             adb.setTitle("Confirm Submission of News ?");
@@ -258,6 +265,11 @@ public class SubmitNews extends AppCompatActivity {
                                         // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                                         Toast.makeText(getApplicationContext(), "Image Upload successful", Toast.LENGTH_SHORT).show();
                                         Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                                        StringBuilder sb = new StringBuilder();
+                                        sb.append(newssubmitter);
+                                        sb.append("                         ");
+                                        sb.append(new SimpleDateFormat("EEE, MMM d, ''yy").format(new Date()));
+                                        newssubmitter = sb.toString();
                                         an = new addNews(newsdescription, downloadUrl.toString(), "All", newstitle, newssubmitter);
                                         databaseReference = FirebaseDatabase.getInstance().getReference();
                                         databaseReference.child("approved").push().setValue(an).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -279,15 +291,19 @@ public class SubmitNews extends AppCompatActivity {
                                     }
                                 });
                             } else {
+                                StringBuilder sb = new StringBuilder();
+                                sb.append(newssubmitter);
+                                sb.append("                         ");
+                                sb.append(new SimpleDateFormat("EEE, MMM d, ''yy").format(new Date()));
+                                newssubmitter = sb.toString();
                                 an = new addNews(newsdescription, newsimageurl, "All", newstitle, newssubmitter);
                                 databaseReference = FirebaseDatabase.getInstance().getReference();
                                 databaseReference.child("approved").push().setValue(an).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        databaseReference = FirebaseDatabase.getInstance().getReference();
-                                        databaseReference.child("unapproved").child(key_to_remove_news).setValue(null);
+
                                         progressDialog.dismiss();
-                                        //finish();
+                                        deleteNews();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
@@ -307,7 +323,16 @@ public class SubmitNews extends AppCompatActivity {
         } else
             Toast.makeText(getApplicationContext(), "Please Enter Title, Description and also upload Image", Toast.LENGTH_LONG).show();
     }
-
+    private void deleteNews() {
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("unapproved").child(key_to_remove_news).setValue(null).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(getApplicationContext(), "Unapproved News Deleted", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+    }
     private void initialize_variable() {
         newsTitle = (EditText) findViewById(R.id.news_title);
         newsImage = (ImageView) findViewById(R.id.news_image);
@@ -315,7 +340,7 @@ public class SubmitNews extends AppCompatActivity {
         newsSubmitter = (TextView) findViewById(R.id.news_submitter);
 
         mAuth = FirebaseAuth.getInstance();
-        newsSubmitter.setText("Bites by " + mAuth.getCurrentUser().getDisplayName());
+        newsSubmitter.setText(mAuth.getCurrentUser().getDisplayName());
 
     }
 }

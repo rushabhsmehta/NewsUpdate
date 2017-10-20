@@ -18,4 +18,9 @@
         android:orderInCategory="102"
         android:title="Approve News"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/delete_news"
+        android:orderInCategory="103"
+        android:title="Delete News"
+        app:showAsAction="never" />
 </menu>

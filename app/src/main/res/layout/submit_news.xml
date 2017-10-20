@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:layout_weight="10">
+
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"
         android:layout_weight="6">
+
         <ImageView
             android:id="@+id/news_image"
             android:layout_width="match_parent"
@@ -21,6 +24,8 @@
             android:padding="2dp"
             android:layout_gravity="center"
             android:src="@color/colorPrimaryDark"/>
+
+
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical" android:layout_width="match_parent"
@@ -32,25 +37,28 @@
             android:id="@+id/news_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
+            android:layout_margin="4dp"
+            android:hint="News Title (Max 100 Characters)"
             android:inputType="textMultiLine"
-            android:text="News Title"
+            android:maxLength="100"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="#ffffff"
+            android:textColorLink="@color/colorAccent"
             android:textSize="18sp" />
 
         <EditText
             android:id="@+id/news_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
+            android:layout_margin="4dp"
             android:inputType="textMultiLine"
             android:lineSpacingExtra="6sp"
+            android:maxLength="540"
+            android:hint="News Description (Max 500 Characters)"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="#ffffff"
-            android:textSize="14sp"
-            tools:text="News Description" />
+            android:textSize="14sp"/>
         <TextView
             android:id="@+id/news_submitter"
             android:layout_width="match_parent"
@@ -61,5 +69,6 @@
             android:textColor="#ffffff"
             android:textSize="10sp"
             tools:text="Bites by" />
+
     </LinearLayout>
 </LinearLayout>
