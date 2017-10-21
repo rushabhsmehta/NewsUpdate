@@ -18,5 +18,21 @@
             android:id="@+id/delete_news"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Delete News" />
+        <item
+            android:id="@+id/submit_event"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Submit an Event" />
+        <item
+            android:id="@+id/approve_event"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Approve Event" />
+        <item
+            android:id="@+id/submit_ad"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Submit an Advertise" />
+        <item
+            android:id="@+id/approve_ad"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Approve Advertise" />
     </group>
 </menu>

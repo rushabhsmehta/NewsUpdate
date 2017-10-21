@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:layout_weight="10"
+    tools:context="com.example.admin.newsupdate.NavigationDrawer"
+    tools:showIn="@layout/app_bar_navigation_drawer">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_weight="6"
+        android:id="@+id/news_image_layout"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/news_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-2dp"
+            android:layout_marginRight="0dp"
+            android:padding="2dp"
+            android:layout_gravity="center"
+            android:src="@color/colorPrimaryDark"
+            android:visibility="gone"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_weight="4">
+
+        <EditText
+            android:id="@+id/news_title_eng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="English News Title (Max 100 Characters)"
+            android:inputType="textMultiLine"
+            android:maxLength="100"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="#ffffff"
+            android:textColorLink="@color/colorAccent"
+            android:textSize="18sp"
+            android:minLines="2"/>
+        <EditText
+            android:id="@+id/news_title_guj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="Gujarati News Title (Max 100 Characters)"
+            android:inputType="textMultiLine"
+            android:maxLength="100"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="#ffffff"
+            android:textColorLink="@color/colorAccent"
+            android:textSize="18sp"
+            android:minLines="2"/>
+
+        <EditText
+            android:id="@+id/news_description_eng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="English News Description (Max 500 Characters)"
+            android:inputType="textMultiLine"
+            android:lineSpacingExtra="6sp"
+            android:maxLength="540"
+            android:minLines="10"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="#ffffff"
+            android:textColorLink="@color/colorPrimary"
+            android:textSize="14sp"
+            android:visibility="gone"/>
+        <EditText
+            android:id="@+id/news_description_guj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:inputType="textMultiLine"
+            android:lineSpacingExtra="6sp"
+            android:maxLength="540"
+            android:hint="Gujarati News Description (Max 500 Characters)"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            android:minLines="10"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/news_submitter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:lineSpacingExtra="6sp"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="10sp"
+            android:visibility="gone"
+            tools:text="Bites by" />
+
+        <Button
+            android:id="@+id/button_next_for_image_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:text="Next"
+            android:textColor="#ffffff" />
+        <Button
+            android:id="@+id/button_next_for_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="Next"
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"/>
+        <Button
+            android:id="@+id/view_final_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="View Final News"
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</LinearLayout>
+

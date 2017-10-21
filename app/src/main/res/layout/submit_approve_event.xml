@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:layout_weight="10">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_weight="5">
+        <ImageView
+            android:id="@+id/event_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-2dp"
+            android:layout_marginRight="0dp"
+            android:padding="2dp"
+            android:layout_gravity="center"
+            android:src="@color/colorPrimaryDark"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_weight="5">
+
+        <EditText
+            android:id="@+id/event_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:text="Event Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/event_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            tools:text="Event Description" />
+
+        <Button
+            android:id="@+id/submit_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit Event"
+            android:layout_gravity="center_horizontal"/>
+        <Button
+            android:id="@+id/approve_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:text="Approve Event" />
+    </LinearLayout>
+</LinearLayout>

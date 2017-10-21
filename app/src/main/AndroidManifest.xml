@@ -28,6 +28,17 @@
             android:name=".NavigationDrawer"
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ApproveEvent"
+            android:label="@string/title_activity_approve_event"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".SubmitAd"
+            android:label="@string/title_activity_submit_ad"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ApproveAd"
+            android:label="@string/title_activity_approve_ad"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
 </manifest>
